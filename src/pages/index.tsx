@@ -1,5 +1,9 @@
 import Head from 'next/head';
 
+import { GlobalStyle } from '@/styles/global';
+
+import { SplashScreen } from '@/components/partials/SplashScreen';
+
 export default function Home() {
   return (
     <>
@@ -20,9 +24,11 @@ export default function Home() {
 
         
       </Head>
+
+      <GlobalStyle />
       
       <main>
-        
+        <SplashScreen />
       </main>
     </>
   )
