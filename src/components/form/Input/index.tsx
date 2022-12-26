@@ -1,5 +1,4 @@
-import { type } from "os";
-import { ComponentType, InputHTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react";
 import { InputStyled } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

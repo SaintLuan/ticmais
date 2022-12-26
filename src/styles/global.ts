@@ -14,6 +14,15 @@ export const GlobalStyle = createGlobalStyle`
         background: transparent;
     }
 
+    ul, li, dt{
+        list-style: none;
+    }
+
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+
     html{
         font-family: 'Urbanist', sans-serif;
     }
