@@ -1,14 +1,21 @@
 export const defaultTheme = {
-  white: '#FFF',
+  'white': '#FFFFF F',
 
-  'gray-100': '#E1E1E6',
-  'gray-300': '#C4C4CC',
-  'gray-400': '#8D8D99',
-  'gray-500': '#7C7C8A',
-  'gray-600': '#323238',
-  'gray-700': '#29292E',
-  'gray-800': '#202024',
-  'gray-900': '#121214',
+  'primary-500': '#023E5E',
+  'primary-400': '#35657E',
+  'primary-300': '#557E93',
+  'primary-200': '#8BA6B5',
+  'primary-100': '#B1C3CD',
+
+  'gray-50': '#FAFAFA',
+  'gray-100': '#F5F5F5',
+  'gray-300': '#E0E0E0',
+  'gray-400': '#BDBDBD',
+  'gray-500': '#9E9E9E',
+  'gray-600': '#757575',
+  'gray-700': '#616161',
+  'gray-800': '#424242', 
+  'gray-900': '#212121',
 
   'green-300': '#00B37E',
   'green-500': '#00875F',
@@ -18,4 +25,13 @@ export const defaultTheme = {
   'red-700': '#7A1921',
 
   'yellow-500': '#FBA94C',
+
+  // Background Colors
+  'bg-purple': '#F6F5FF',
+  'bg-blue': '#EEF4FF',
+  'bg-green': '#F2FFFC',
+  'bg-orange': '#FFF8ED',
+  'bg-pink': '#FFF5F5',
+  'bg-yellow': '#FFFEE0',
+
 }

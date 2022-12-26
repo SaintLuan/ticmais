@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -7,19 +7,29 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    select, input, textarea, button, fieldset{
+        border: none;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+    }
+
+    html{
+        font-family: 'Urbanist', sans-serif;
+    }
+
     :focus{
         outline: 0;
-        box-shadow: 0 0 0 2px #212121;
     }
 
     body{
-        background: #ffffff;
-        color: #212121;
+        background: ${(props) => props.theme['white']};
+        color: ${(props) => props.theme['gray-800']};
         
     }
 
     body, input, textarea, button{
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Urbanist', sans-serif;
         font-weight: 400;
         font-size: 1rem;
     }
