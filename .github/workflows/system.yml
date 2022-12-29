@@ -1,21 +1,5 @@
 name: 'system setup'
 
-on: 
-  workflow_dispatch:
-    inputs:
-      frontend_url:
-        description: frontend url
-        required: true
-        type: string
-      root_password:
-        description: root password
-        required: true
-        type: string
-      deploy_password:
-        description: deploy password
-        required: true
-        type: string
-
 jobs:
   dependencies:
     name: update OS + install dependencies
@@ -25,8 +9,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: root
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.root_password }}
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
           script: |
             apt update && apt upgrade -y
             apt install nginx -y || true
@@ -40,17 +24,3 @@ jobs:
             apt-get install -y nodejs || true
             npm install -g pm2
             npm install -g yarn
-
-  user:
-    name: create user for deployment
-    runs-on: ubuntu-latest
-    needs: [dependencies]
-    steps:
-      - name: create deploy user
-        uses: appleboy/ssh-action@master
-        with:
-          username: root
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.root_password }}
-          script: |
-            useradd -m -p $(openssl passwd -crypt ${{ github.event.inputs.deploy_password }}) -s /bin/bash -G sudo deploy || true
