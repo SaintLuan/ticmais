@@ -1,0 +1,57 @@
+name: "deploy"
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: "app name"
+        default: "TicMais"
+        required: true
+        type: string
+
+jobs:
+  setup:
+    name: setup code for build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: send code to server
+        uses: appleboy/scp-action@master
+        with:
+          username: deploy
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          source: "."
+          target: "/home/deploy/ticmais/store"
+
+      - name: create .env file
+        uses: appleboy/ssh-action@master
+        with:
+          username: deploy
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            cd /home/deploy/ticmais/web
+
+            rm .env
+            touch .env
+            echo NEXT_PUBLIC_APP_NAME="${{ github.event.inputs.app_name }}" >> .env
+            echo PORT="${{ secrets.PORT }}" >> .env
+
+  build:
+    name: compile next.js + publish new version
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v3
+      - name: build and publish
+        uses: appleboy/ssh-action@master
+        with:
+          username: deploy
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            cd /home/deploy/ticmais/web
+            yarn build
+            yarn start
