@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "yarn && yarn clear && next build",
     "start": "node server.js",
     "lint": "next lint",
     "pm2:reset": "pm2 -s delete ticmais-store--prod && pm2 save || true",
