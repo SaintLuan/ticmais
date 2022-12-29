@@ -1,5 +1,12 @@
 name: 'system setup'
 
+on: 
+  workflow_dispatch:
+    inputs:
+      frontend_url:
+        description: ignore
+        type: string
+
 jobs:
   dependencies:
     name: update OS + install dependencies

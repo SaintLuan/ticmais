@@ -1,5 +1,12 @@
 name: 'ssl setup'
 
+on: 
+  workflow_dispatch:
+    inputs:
+      frontend_url:
+        description: ignore
+        type: string
+
 jobs:
   nginx:
     name: setup web.conf on nginx
