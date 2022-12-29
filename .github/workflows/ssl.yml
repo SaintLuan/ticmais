@@ -1,0 +1,66 @@
+name: "ssl setup"
+
+on: 
+  workflow_dispatch:
+    inputs:
+      frontend_url:
+        description: "ignore"
+        type: string
+
+jobs:
+  nginx:
+    name: setup web.conf on nginx
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set domain to web.conf
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          regex: true
+          include: "nginx/web.conf"
+          find: "frontend_url"
+          replace: ${{ secrets.DOMAIN }}
+
+      - name: set port to web.conf
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          regex: true
+          include: "nginx/web.conf"
+          find: "frontend_port"
+          replace: ${{ secrets.PORT }}
+
+      - name: copy web.conf to /etc/nginx/sites-available
+        uses: appleboy/scp-action@master
+        with:
+          username: root
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
+          source: "nginx/web.conf"
+          target: "/etc/nginx/sites-available"
+          strip_components: 1
+          
+      - name: enable web.conf
+        uses: appleboy/ssh-action@master
+        with:
+          username: root
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
+          script: |
+            ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled || true
+            sudo nginx -t
+            sudo service nginx restart
+
+  ssl:
+    name: request/renew let"s encrypt SSL certificate
+    runs-on: ubuntu-latest
+    needs: [nginx]
+    steps:
+      - uses: actions/checkout@v3
+      - name: run certbot
+        uses: appleboy/ssh-action@master
+        with:
+          username: root
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
+          script: |
+            certbot -m ${{ secrets.SSL_EMAIL }} --nginx --agree-tos --non-interactive --domains ${{ secrets.DOMAIN }}
