@@ -1,5 +1,13 @@
 name: 'deploy'
 
+on: 
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: app name
+        required: true
+        type: string
+
 jobs:
   setup:
     name: setup code for build
@@ -11,8 +19,8 @@ jobs:
         uses: appleboy/scp-action@master
         with:
           username: deploy
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.deploy_password }}
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.DEPLOY_KEY }}
           source: "."
           target: "/home/deploy/ticmais/store"
 
@@ -20,15 +28,15 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: deploy
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.deploy_password }}
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd /home/deploy/ticmais/web
 
             rm .env
             touch .env
-            echo NEXT_PUBLIC_API_URL="${{ github.event.inputs.backend_url }}" >> .env
-            echo PORT="${{ github.event.inputs.frontend_port }}" >> .env
+            echo NEXT_PUBLIC_APP_NAME="${{ github.event.inputs.app_name }}" >> .env
+            echo PORT="${{ secrets.PORT }}" >> .env
 
   build:
     name: compile next.js + publish new version
@@ -40,8 +48,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: deploy
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.deploy_password }}
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd /home/deploy/ticmais/web
             yarn build
