@@ -1,0 +1,68 @@
+name: 'deploy'
+
+on: 
+  workflow_dispatch:
+    inputs:
+      frontend_url:
+        description: frontend url
+        required: true
+        type: string
+      backend_url:
+        description: backend url
+        required: true
+        type: string
+      deploy_password:
+        description: deploy password
+        required: true
+        type: string
+      frontend_port:
+        description: frontend port
+        default: '3030'
+        required: true
+        type: string
+
+jobs:
+  setup:
+    name: setup code for build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: send code to server
+        uses: appleboy/scp-action@master
+        with:
+          username: deploy
+          host: ${{ github.event.inputs.frontend_url }}
+          password: ${{ github.event.inputs.deploy_password }}
+          source: "."
+          target: "/home/deploy/ticpass/web"
+
+      - name: create .env file
+        uses: appleboy/ssh-action@master
+        with:
+          username: deploy
+          host: ${{ github.event.inputs.frontend_url }}
+          password: ${{ github.event.inputs.deploy_password }}
+          script: |
+            cd /home/deploy/ticpass/web
+
+            rm .env
+            touch .env
+            echo NEXT_PUBLIC_API_URL="${{ github.event.inputs.backend_url }}" >> .env
+            echo PORT="${{ github.event.inputs.frontend_port }}" >> .env
+
+  build:
+    name: compile next.js + publish new version
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v3
+      - name: build and publish
+        uses: appleboy/ssh-action@master
+        with:
+          username: deploy
+          host: ${{ github.event.inputs.frontend_url }}
+          password: ${{ github.event.inputs.deploy_password }}
+          script: |
+            cd /home/deploy/ticpass/web
+            yarn deploy:prod

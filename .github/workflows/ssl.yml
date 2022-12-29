@@ -1,0 +1,81 @@
+name: 'ssl setup'
+
+on: 
+  workflow_dispatch:
+    inputs:
+      ssl_email:
+        description: ssl email
+        default: dev@ticmais.com
+        required: true
+        type: string
+      frontend_url:
+        description: frontend url
+        required: true
+        type: string
+      frontend_port:
+        description: frontend port
+        default: '3030'
+        required: true
+        type: string
+      root_password:
+        description: root password
+        required: true
+        type: string
+
+jobs:
+  nginx:
+    name: setup web.conf on nginx
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set domain to web.conf
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          regex: true
+          include: "nginx/web.conf"
+          find: "frontend_url"
+          replace: ${{ github.event.inputs.frontend_url }}
+
+      - name: set port to web.conf
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          regex: true
+          include: "nginx/web.conf"
+          find: "frontend_port"
+          replace: ${{ github.event.inputs.frontend_port }}
+
+      - name: copy web.conf to /etc/nginx/sites-available
+        uses: appleboy/scp-action@master
+        with:
+          username: root
+          host: ${{ github.event.inputs.frontend_url }}
+          password: ${{ github.event.inputs.root_password }}
+          source: "nginx/web.conf"
+          target: "/etc/nginx/sites-available"
+          strip_components: 1
+          
+      - name: enable web.conf
+        uses: appleboy/ssh-action@master
+        with:
+          username: root
+          host: ${{ github.event.inputs.frontend_url }}
+          password: ${{ github.event.inputs.root_password }}
+          script: |
+            ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled || true
+            sudo nginx -t
+            sudo service nginx restart
+
+  ssl:
+    name: request/renew let's encrypt SSL certificate
+    runs-on: ubuntu-latest
+    needs: [nginx]
+    steps:
+      - uses: actions/checkout@v3
+      - name: run certbot
+        uses: appleboy/ssh-action@master
+        with:
+          username: root
+          host: ${{ github.event.inputs.frontend_url }}
+          password: ${{ github.event.inputs.root_password }}
+          script: |
+            certbot -m ${{ github.event.inputs.ssl_email }} --nginx --agree-tos --non-interactive --domains ${{ github.event.inputs.frontend_url }}
