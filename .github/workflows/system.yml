@@ -1,10 +1,10 @@
-name: 'system setup'
+name: "system setup"
 
 on: 
   workflow_dispatch:
     inputs:
       frontend_url:
-        description: 'ignore'
+        description: "ignore"
         type: string
 
 jobs:
