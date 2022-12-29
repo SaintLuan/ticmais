@@ -1,27 +1,5 @@
 name: 'ssl setup'
 
-on: 
-  workflow_dispatch:
-    inputs:
-      ssl_email:
-        description: ssl email
-        default: dev@ticmais.com
-        required: true
-        type: string
-      frontend_url:
-        description: frontend url
-        required: true
-        type: string
-      frontend_port:
-        description: frontend port
-        default: '3030'
-        required: true
-        type: string
-      root_password:
-        description: root password
-        required: true
-        type: string
-
 jobs:
   nginx:
     name: setup web.conf on nginx
@@ -34,7 +12,7 @@ jobs:
           regex: true
           include: "nginx/web.conf"
           find: "frontend_url"
-          replace: ${{ github.event.inputs.frontend_url }}
+          replace: ${{ secrets.DOMAIN }}
 
       - name: set port to web.conf
         uses: jacobtomlinson/gha-find-replace@v2
@@ -42,14 +20,14 @@ jobs:
           regex: true
           include: "nginx/web.conf"
           find: "frontend_port"
-          replace: ${{ github.event.inputs.frontend_port }}
+          replace: ${{ secrets.PORT }}
 
       - name: copy web.conf to /etc/nginx/sites-available
         uses: appleboy/scp-action@master
         with:
           username: root
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.root_password }}
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
           source: "nginx/web.conf"
           target: "/etc/nginx/sites-available"
           strip_components: 1
@@ -58,8 +36,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: root
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.root_password }}
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
           script: |
             ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled || true
             sudo nginx -t
@@ -75,7 +53,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: root
-          host: ${{ github.event.inputs.frontend_url }}
-          password: ${{ github.event.inputs.root_password }}
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
           script: |
-            certbot -m ${{ github.event.inputs.ssl_email }} --nginx --agree-tos --non-interactive --domains ${{ github.event.inputs.frontend_url }}
+            certbot -m ${{ secrets.SSL_EMAIL }} --nginx --agree-tos --non-interactive --domains ${{ secrets.DOMAIN }}
