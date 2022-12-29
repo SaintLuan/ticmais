@@ -32,7 +32,7 @@ jobs:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            cd /home/deploy/ticmais/web
+            cd /home/deploy/ticmais/store
 
             rm .env
             touch .env
@@ -52,6 +52,5 @@ jobs:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            cd /home/deploy/ticmais/web
-            yarn build
-            yarn start
+            cd /home/deploy/ticmais/store
+            yarn deploy:prod

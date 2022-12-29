@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "node server.js",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pm2:reset": "pm2 -s delete ticmais-store--prod && pm2 save || true",
+    "pm2:start": "pm2 start 'yarn start' --name 'ticmais-store--prod' && pm2 save",
+    "deploy:prod": "yarn build && yarn pm2:reset && yarn pm2:start"
   },
   "dependencies": {
     "@next/font": "13.1.0",
