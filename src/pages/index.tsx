@@ -19,6 +19,9 @@ import { Footer } from '@/components/shared/Footer';
 import { BannerEvents } from '@/components/partials/home/BannerEvents';
 import { FilterInput } from '@/components/partials/home/FilterInput';
 import { TrendEvents } from '@/components/partials/home/TrendEvents';
+import { CreateEvent } from '@/components/partials/home/CreateEvent';
+import { PartnersSection } from '@/components/partials/home/PartnersSection';
+import { BlogSection } from '@/components/shared/BlogSection';
 
 export default function Home() {
 
@@ -70,6 +73,10 @@ export default function Home() {
           <BannerEvents events={highEvents} />
 
           <TrendEvents events={trendingEvents} />
+
+          <CreateEvent />
+          <PartnersSection partners={partners} />
+          <BlogSection artigos={blog} />
 
           <Footer />
         </>
