@@ -7,6 +7,12 @@ export const defaultTheme = {
   'primary-200': '#8BA6B5',
   'primary-100': '#B1C3CD',
 
+  'secondary-500': '#F0C75E',
+  'secondary-400': '#F3D27E',
+  'secondary-300': '#F5D993',
+  'secondary-200': '#F8E5B5',
+  'secondary-100': '#FAEECD',
+
   'gray-50': '#FAFAFA',
   'gray-100': '#F5F5F5',
   'gray-300': '#E0E0E0',

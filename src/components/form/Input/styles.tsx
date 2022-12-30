@@ -7,7 +7,7 @@ interface InputProps {
 export const InputStyled = styled.fieldset<InputProps>`
     width: ${props => props.width}%;
     border-radius: 6px;
-    margin: .75rem 0;
+    margin: .75rem auto;
     padding: 1rem 1.25rem;
     background: ${(props) => props.theme['gray-50']};
 

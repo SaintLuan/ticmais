@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { FooterContainer, FooterInst, FooterLogo, FooterNav, NavNewsletter, SocialLinks } from "./styles";
+import { ButtonNews, FooterContainer, FooterInst, FooterLogo, FooterNav, FooterTop, NavNewsletter, SocialLinks } from "./styles";
 
 import logoFooter from '@/assets/img/logo_white.svg';
 import instaIcon from '@/assets/img/instagram.svg';
@@ -66,12 +66,15 @@ export const Footer = () =>{
 
                 <NavNewsletter>
                     <h2>Fique por dentro</h2>
-
+ 
                     <p>
                         Junte-se a nossa newsletter para não perder nenhum detalhe dos eventos!
                     </p>
 
-                    <button>Inscreva-se</button>
+                    <ButtonNews>
+                        <input placeholder="Insira seu email aqui..." type="email" />
+                        <button>Inscrever-se</button>
+                    </ButtonNews>
                 </NavNewsletter>
             </FooterNav>
 

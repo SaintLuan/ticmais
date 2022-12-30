@@ -14,6 +14,14 @@ export const GlobalStyle = createGlobalStyle`
         background: transparent;
     }
 
+    figure{
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        line-height: 0;
+    }
+
     ul, li, dt{
         list-style: none;
     }
@@ -25,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 
     html{
         font-family: 'Urbanist', sans-serif;
+        scroll-behavior: smooth;
     }
 
     :focus{
@@ -42,4 +51,29 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-size: 1rem;
     }
-`
+
+    /* Custom ScrollBar */
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: ${(props) => props.theme['white']};
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: ${(props) => props.theme['primary-400']};
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: ${(props) => props.theme['primary-300']};
+    }
+
+    /* Classes Globais */
+    .container{
+        width: 85%;
+        margin: 2rem auto;
+        padding: 1rem 0;
+    }
+`;

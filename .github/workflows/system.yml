@@ -1,0 +1,33 @@
+name: "system setup"
+
+on: 
+  workflow_dispatch:
+    inputs:
+      frontend_url:
+        description: "ignore"
+        type: string
+
+jobs:
+  dependencies:
+    name: update OS + install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: install dependencies
+        uses: appleboy/ssh-action@master
+        with:
+          username: root
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.ROOT_KEY }}
+          script: |
+            apt update && apt upgrade -y
+            apt install nginx -y || true
+
+            snap install core || true
+            snap refresh core || true
+            snap install --classic certbot || true
+            ln -s /snap/bin/certbot /usr/bin/certbot || true
+
+            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+            apt-get install -y nodejs || true
+            npm install -g pm2
+            npm install -g yarn
