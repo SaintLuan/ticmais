@@ -18,6 +18,7 @@ import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
 import { BannerEvents } from '@/components/partials/home/BannerEvents';
 import { FilterInput } from '@/components/partials/home/FilterInput';
+import { TrendEvents } from '@/components/partials/home/TrendEvents';
 
 export default function Home() {
 
@@ -67,6 +68,8 @@ export default function Home() {
 
           <FilterInput />
           <BannerEvents events={highEvents} />
+
+          <TrendEvents events={trendingEvents} />
 
           <Footer />
         </>

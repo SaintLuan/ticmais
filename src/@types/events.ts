@@ -1,6 +1,7 @@
 export type EventProps ={ 
     title: string;
     subtitle: string;
+    slug: string;
     local: string;
     startDate: string;
     endDate: string;
