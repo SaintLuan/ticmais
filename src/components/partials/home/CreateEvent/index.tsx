@@ -1,6 +1,6 @@
 import { CreateContainer, CreateFigure, CreateText } from "./styles";
 
-import imageCreate from '@/assets/img/create-event.svg';
+import imageCreate from '@/assets/img/pages/home/create-event.svg';
 import Image from "next/image";
 
 export const CreateEvent = () =>{

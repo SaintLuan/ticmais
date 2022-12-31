@@ -4,6 +4,7 @@ import Image from "next/image";
 import logoHeader from '@/assets/img/logo_color.svg';
 import menuIcon from '@/assets/img/menu.svg';
 import avatar from '@/assets/img/avatar.svg';
+import Link from "next/link";
 
 export const Header = () => {
     return(
@@ -17,7 +18,10 @@ export const Header = () => {
             </HeaderLogo>
 
             <HeaderProfiler>
-                <Image src={avatar} width={35} alt="Tic Mais" />
+                <Link href='/signin'>
+                    <Image src={avatar} width={35} alt="Tic Mais" />
+                </Link>
+                
             </HeaderProfiler>
 
         </HeaderContainer>

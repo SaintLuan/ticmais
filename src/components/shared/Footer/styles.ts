@@ -17,7 +17,7 @@ export const FooterContainer = styled.footer`
         content: '';
         display: block;
         position: absolute;
-        top: -49px;
+        top: -45px;
         left: 0;
         width: 100%;
         height: 50px;
