@@ -137,9 +137,9 @@ export const SigninPage = () =>{
                         >
                             Cadastrar
                         </Button>
-
-                        {/* <span onClick={handleShowForm}>Cancelar cadastro</span> */}
                     </SigninForm>
+
+                    <button className="otherMetod" onClick={handleShowForm}>Selecionar outro método de cadastro.</button>
                 </SigninContainer>
             </ThemeProvider>
         </>
