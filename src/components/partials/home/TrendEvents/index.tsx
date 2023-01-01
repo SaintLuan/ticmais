@@ -3,6 +3,8 @@ import { TrendContainerGrid, TrendEvent, TrendEventImage, TrendEventInfos, Trend
 
 import { EventsProps } from "@/@types/events";
 import { Heart, Location } from "react-iconly";
+import Link from "next/link";
+import Image from "next/image";
 
 export const TrendEvents = ({ events }: EventsProps) => {
     return(
@@ -12,24 +14,26 @@ export const TrendEvents = ({ events }: EventsProps) => {
             <TrendContainerGrid>
                 {
                     events.map((event) => (
-                        <TrendEvent key={event.title}>
-                            <TrendEventImage>
-                                <img src={event.thumbnail} alt={event.title} />
-                            </TrendEventImage>
+                        <Link key={event.title} href={'/events/' + event.slug}>
+                            <TrendEvent>
+                                <TrendEventImage>
+                                    <Image width={400} height={250}  src={event.thumbnail} alt={event.title} />
+                                </TrendEventImage>
 
-                            <TrendEventInfos>
-                                <h2 className="title">{event.title}</h2>
+                                <TrendEventInfos>
+                                    <h2 className="title">{event.title}</h2>
 
-                                <span className="date">{event.startDate}</span>
+                                    <span className="date">{event.startDate}</span>
 
-                                <span className="local">
-                                    <Location />
-                                    <span>{event.local}</span>
-                                    <Heart />
-                                </span>
-                            </TrendEventInfos>
-                            
-                        </TrendEvent>
+                                    <span className="local">
+                                        <Location />
+                                        <span>{event.local}</span>
+                                        <Heart />
+                                    </span>
+                                </TrendEventInfos>
+                                
+                            </TrendEvent>
+                        </Link>
                     ))
                 }
             </TrendContainerGrid>

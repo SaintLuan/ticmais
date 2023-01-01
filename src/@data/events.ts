@@ -2,7 +2,7 @@ export const events = [
     { 
         title: 'Baile da favorita Tantrarosa | 30/12',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'baile-da-favorita-tantrarosa',
         local: 'Tantrarosa, Garopaba',
         startDate: '30/12/2022 23:00:00',
         endDate: '01/01/2023 17:00:00',
@@ -14,7 +14,7 @@ export const events = [
     { 
         title: 'Feijoada com Pagode',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'feijoada-com-pagode',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -26,7 +26,7 @@ export const events = [
     { 
         title: 'Boiadeira Sunset',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'boiadera-sunset',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -38,7 +38,7 @@ export const events = [
     { 
         title: 'Revéillon 2023',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'reveillon-2023',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -50,7 +50,7 @@ export const events = [
     { 
         title: 'Revéillon do Cerrado',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'reveillon-do-cerrado',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -62,7 +62,7 @@ export const events = [
     { 
         title: 'TRIBE BEAT REVEILLON ',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'tribe-beat-reveillon',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -74,7 +74,7 @@ export const events = [
     { 
         title: 'Sunset do Carrara',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'sunset-do-carrara',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -86,7 +86,7 @@ export const events = [
     { 
         title: 'Reveillon Casa Sede',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'reveillon-casa-sede',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -98,7 +98,7 @@ export const events = [
     { 
         title: 'icaro e Gilmar',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'icaro-e-gilmar',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',
@@ -110,7 +110,7 @@ export const events = [
     { 
         title: 'JOELMA RONDONÓPOLIS ',
         subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum quibusdam id numquam magni harum ducimus eius.',
-        slug: '',
+        slug: 'joelma-rondonopolis',
         local: 'Arena Pantanal, Cuiabá',
         startDate: '14/03/2022 18:00:00',
         endDate: '14/03/2022 23:00:00',

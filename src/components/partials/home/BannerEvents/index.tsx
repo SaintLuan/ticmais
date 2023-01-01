@@ -5,6 +5,7 @@ import 'swiper/css';
 
 import { BannerContainer, BannerItem, BannerItemImage, BannerItemInfos } from "./styles";
 import { TitleSection } from "@/components/shared/TitleSection";
+import Image from "next/image";
 
 export const BannerEvents = ({ events }: EventsProps) =>{
 
@@ -32,7 +33,7 @@ export const BannerEvents = ({ events }: EventsProps) =>{
                         <SwiperSlide key={event.title}>
                             <BannerItem>
                                 <BannerItemImage>
-                                    <img src={event.thumbnail} alt={event.title} />
+                                    <Image width={100} height={0} layout="responsive" src={event.thumbnail} alt={event.title} />
                                 </BannerItemImage>
                                 
                                 <BannerItemInfos>

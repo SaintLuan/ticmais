@@ -1,4 +1,5 @@
 import { PartnersProps } from "@/@types/partners";
+import Image from "next/image";
 import { PartnerLogo, PartnersContainer, PartnersHeader, PartnersLogos } from "./styles";
 
 export const PartnersSection = ({ partners }: PartnersProps) =>{
@@ -16,7 +17,7 @@ export const PartnersSection = ({ partners }: PartnersProps) =>{
                 {
                     partners.map((partner) => (
                         <PartnerLogo key={partner.id}>
-                            <img src={partner.logo} alt={partner.title} />
+                            <Image width={272} height={50} layout="responsive" src={partner.logo} alt={partner.title} />
                         </PartnerLogo>
                     ))
                 }

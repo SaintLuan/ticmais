@@ -13,10 +13,22 @@ export const TrendContainerGrid = styled.section`
     align-items: flex-start;
     justify-content: center;
 
+    a{
+        width: calc((100%/4) - 1rem);
+    }
+
+    @media screen and (max-width: 480px){
+
+        a{
+            width: calc((100%/2) - .5rem);
+        }
+        
+    }
+
 `;
 
 export const TrendEvent = styled.aside`
-    width: calc((100%/4) - 1rem);
+    width: 100%;
     padding: .5rem;
     margin: .75rem 0;
 
@@ -31,7 +43,6 @@ export const TrendEvent = styled.aside`
 
     @media screen and (max-width: 480px){
         gap: .25rem;
-        width: calc((100%/2) - .5rem);
     }
 `;
 

@@ -65,7 +65,7 @@ export const ArticleThumb = styled.figure`
 
     img{
         width: 100%;
-        height: 100%;
+        height: 100% !important;
 
         object-fit: cover;
         border-radius: 15px;

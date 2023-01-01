@@ -40,7 +40,7 @@ export const BannerItemImage = styled.figure`
 
     img{
         width: 100%;
-        height: 100%;
+        height: 100% !important;
         border-radius: 0 0 20px 20px;
         object-fit: cover;
     }

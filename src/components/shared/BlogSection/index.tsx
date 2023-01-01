@@ -1,4 +1,5 @@
 import { ArtigosBlogProps } from "@/@types/blog";
+import Image from "next/image";
 import { ArticleInfos, ArticleThumb, BlogArticle, BlogArticles, BlogContainer, BlogHeader } from "./styles";
 
 export const BlogSection = ({ artigos }: ArtigosBlogProps) => {
@@ -16,7 +17,7 @@ export const BlogSection = ({ artigos }: ArtigosBlogProps) => {
                     artigos.map((artigo) => (
                         <BlogArticle key={artigo.id} >
                             <ArticleThumb>
-                                <img src={artigo.thumbnail} alt={artigo.title} />
+                                <Image width={272} height={0} layout="responsive" src={artigo.thumbnail} alt={artigo.title} />
                             </ArticleThumb>
 
                             <ArticleInfos>
