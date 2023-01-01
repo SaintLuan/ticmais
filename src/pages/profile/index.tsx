@@ -1,8 +1,13 @@
-export const Profile = () =>{
+import { AppLayout } from "@/layouts/AppLayout"
+import { ProfileContainer } from "@/styles/profileStyles"
+
+    export const Profile = () =>{
     return(
-        <>
-            <h2>Login</h2>
-        </>
+        <AppLayout title="Perfil">
+            <ProfileContainer>
+                <h2>Perfil</h2>
+            </ProfileContainer>
+        </AppLayout>
     );
 }
 
