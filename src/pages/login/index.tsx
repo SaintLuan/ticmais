@@ -5,7 +5,7 @@ import { Footer } from "@/components/shared/Footer";
 import { AppLayout } from "@/layouts/AppLayout";
 import { Button } from "@/components/shared/Button";
 import { Input } from "@/components/form/Input";
-import { LoginCta, LoginContainer, LoginDivider, LoginFigure, LoginForm, LoginOptions } from "./styles";
+import { LoginCta, LoginContainer, LoginDivider, LoginFigure, LoginForm, LoginOptions } from "@/styles/loginStyles";
 
 //Images Import
 import loginIlust from '@/assets/img/pages/signin/vamos-nessa.svg';
