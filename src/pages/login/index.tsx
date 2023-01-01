@@ -5,10 +5,10 @@ import { Footer } from "@/components/shared/Footer";
 import { AppLayout } from "@/layouts/AppLayout";
 import { Button } from "@/components/shared/Button";
 import { Input } from "@/components/form/Input";
-import { LoginCta, SigninContainer, SigninDivider, SigninFigure, SigninForm, SigninOptions } from "./styles";
+import { LoginCta, LoginContainer, LoginDivider, LoginFigure, LoginForm, LoginOptions } from "./styles";
 
 //Images Import
-import signinIlust from '@/assets/img/pages/signin/vamos-nessa.svg';
+import loginIlust from '@/assets/img/pages/signin/vamos-nessa.svg';
 import appIcon from '@/assets/img/blue-icon.svg';
 
 // Icons Import
@@ -36,13 +36,13 @@ export const LoginPage = () =>{
     return(
         <>
             <AppLayout title="Cadastrate-se">
-                <SigninContainer className="container">
-                    <SigninFigure>
-                        <Image src={signinIlust} alt="Vamos nessa? Cadastre-se agora!" />
+                <LoginContainer className="container">
+                    <LoginFigure>
+                        <Image src={loginIlust} alt="Vamos nessa? Cadastre-se agora!" />
                         <h2>Vamos nessa?</h2>
-                    </SigninFigure>
+                    </LoginFigure>
 
-                    <SigninOptions>
+                    <LoginOptions>
                         <Button
                             width={85}
                             color="gray-200"
@@ -73,11 +73,11 @@ export const LoginPage = () =>{
                             Continuar com Apple
                         </Button>
 
-                        <SigninDivider>
+                        <LoginDivider>
                             <hr />
                             <span>ou</span>
                             <hr />
-                        </SigninDivider>
+                        </LoginDivider>
 
                         <Button
                             width={85}
@@ -93,20 +93,20 @@ export const LoginPage = () =>{
                             Ainda não é cadastrado?
                             <Link href='/signin'>Crie já sua conta!</Link>
                         </LoginCta>
-                    </SigninOptions>
-                </SigninContainer>
+                    </LoginOptions>
+                </LoginContainer>
                 <Footer />
             </AppLayout>
 
             {/* Aqui é a "página de cadastro" será exibida Caso seja clicado no CTA de cadastro via email */}
             <ThemeProvider theme={defaultTheme}>
-                <SigninContainer className={ isFormOpen ? "activeForm active" : "activeForm" }>
-                    <SigninFigure>
+                <LoginContainer className={ isFormOpen ? "activeForm active" : "activeForm" }>
+                    <LoginFigure>
                         <Image src={appIcon} alt="Crie sua conta na TicMais!"/>
                         <h2>Login</h2>
-                    </SigninFigure>
+                    </LoginFigure>
 
-                    <SigninForm>
+                    <LoginForm>
                         <Input 
                             width={100}
                             type="text"
@@ -137,10 +137,10 @@ export const LoginPage = () =>{
                         >
                             Login
                         </Button>
-                    </SigninForm>
+                    </LoginForm>
 
                     <button className="otherMetod" onClick={handleShowForm}>Selecionar outro método de cadastro.</button>
-                </SigninContainer>
+                </LoginContainer>
             </ThemeProvider>
         </>
         

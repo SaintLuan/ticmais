@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SigninContainer = styled.section`
+export const LoginContainer = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,7 @@ export const SigninContainer = styled.section`
     }
 `;
 
-export const SigninFigure = styled.figure`
+export const LoginFigure = styled.figure`
     width: 50%;
 
     display: flex;
@@ -60,7 +60,7 @@ export const SigninFigure = styled.figure`
     }
 `;
 
-export const SigninOptions = styled.aside`
+export const LoginOptions = styled.aside`
     width: 35%;
 
     display: flex;
@@ -73,7 +73,7 @@ export const SigninOptions = styled.aside`
     }
 `;
 
-export const SigninDivider = styled.div`
+export const LoginDivider = styled.div`
     width: 100%;
     margin: 1.5rem 0;
 
@@ -110,7 +110,7 @@ export const LoginCta = styled.h3`
     }
 `;
 
-export const SigninForm = styled.form`
+export const LoginForm = styled.form`
     width: 35%;
     margin-top: 2.5rem;
 
