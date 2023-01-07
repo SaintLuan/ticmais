@@ -3,8 +3,8 @@ import { TagContainer } from "./styles";
 
 interface TagProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
-    bgColor: string;
-    textColor: string;
+    bgColor: 'white' | 'primary-500' | 'secondary-500';
+    textColor: 'white' | 'primary-500' | 'secondary-500';
     className: 'filled' | 'outline';
 }
 

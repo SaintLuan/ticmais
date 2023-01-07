@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface TagProps {
-    bgColor: string;
-    textColor: string;
+    bgColor: 'white' | 'primary-500' | 'secondary-500';
+    textColor: 'white' | 'primary-500' | 'secondary-500';
 }
 
 
