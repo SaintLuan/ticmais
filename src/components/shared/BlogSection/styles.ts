@@ -69,6 +69,8 @@ export const ArticleThumb = styled.figure`
 
         object-fit: cover;
         border-radius: 15px;
+        aspect-ratio: 16 / 9;
+        --bs-aspect-ratio: calc(9 / 16 * 100%);
     }
 `;
 

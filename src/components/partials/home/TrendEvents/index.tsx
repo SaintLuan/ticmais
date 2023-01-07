@@ -5,10 +5,12 @@ import { EventsProps } from "@/@types/events";
 import { Heart, Location } from "react-iconly";
 import Link from "next/link";
 import Image from "next/image";
+import { FilterTags } from "../FilterTags";
 
 export const TrendEvents = ({ events }: EventsProps) => {
     return(
         <TrendingContainer className="container">
+            <FilterTags />
             <TitleSection title="Em Alta" seeAllText="Ver Todos" seeALlLink="/events" />
 
             <TrendContainerGrid>

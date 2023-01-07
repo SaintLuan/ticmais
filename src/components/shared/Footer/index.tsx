@@ -80,7 +80,9 @@ export const Footer = () =>{
 
             <FooterInst>
                 <FooterLogo>
-                    <Image src={logoFooter} alt="TicMais"/>
+                    <Link href='/'>
+                        <Image src={logoFooter} alt="TicMais"/>
+                    </Link>
                 </FooterLogo>
 
                 <p>

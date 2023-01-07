@@ -73,7 +73,15 @@ export const GlobalStyle = createGlobalStyle`
     /* Classes Globais */
     .container{
         width: 85%;
-        margin: 2rem auto;
+        margin: 0 auto;
         padding: 1rem 0;
+    }
+
+    .layoutContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
     }
 `;

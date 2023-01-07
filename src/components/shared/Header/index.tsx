@@ -14,7 +14,9 @@ export const Header = () => {
             </MenuContainer>
 
             <HeaderLogo>
-                <Image src={logoHeader} width={100} alt="Tic Mais" />
+                <Link href='/'>
+                    <Image src={logoHeader} width={100} alt="Tic Mais" />
+                </Link>
             </HeaderLogo>
 
             <HeaderProfiler>

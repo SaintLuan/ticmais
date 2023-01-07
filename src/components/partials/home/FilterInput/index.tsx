@@ -6,9 +6,11 @@ export const FilterInput = () => {
     return(
         <>
             <Input 
-                icon={<Search />} 
-                width={85}
-                iconRight={<Filter />} 
+                icon={<Search set="light"  />} 
+                width={65}
+                widthMobile={85}
+                iconRight={<Filter set="light" primaryColor="#023E5E" />}
+                placeholder="Procurar evento..." 
             />
         </>
         

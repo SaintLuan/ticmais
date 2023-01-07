@@ -17,11 +17,11 @@ import { EventProps } from '@/@types/events';
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
 import { BannerEvents } from '@/components/partials/home/BannerEvents';
-import { FilterInput } from '@/components/partials/home/FilterInput';
 import { TrendEvents } from '@/components/partials/home/TrendEvents';
 import { CreateEvent } from '@/components/partials/home/CreateEvent';
 import { PartnersSection } from '@/components/partials/home/PartnersSection';
 import { BlogSection } from '@/components/shared/BlogSection';
+import { FilterTags } from '@/components/partials/home/FilterTags';
 
 export default function Home() {
 
@@ -69,9 +69,7 @@ export default function Home() {
         <>
           <Header />
 
-          <FilterInput />
           <BannerEvents events={highEvents} />
-
           <TrendEvents events={trendingEvents} />
 
           <CreateEvent />

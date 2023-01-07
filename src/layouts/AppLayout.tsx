@@ -36,7 +36,7 @@ export const AppLayout: React.FC<Props> = ({ children, title, description }) =>{
 
             </Head>
 
-            <main>
+            <main className="layoutContainer">
                 {children}
             </main>
         </ThemeProvider>

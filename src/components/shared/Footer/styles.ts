@@ -62,6 +62,7 @@ export const FooterNav = styled.nav`
     ul{
         h2{
             font-size: 1.2rem;
+            letter-spacing: 0.2px;
             font-weight: 700;
             line-height: 1.5rem;
             color: ${(props) => props.theme['white']};
@@ -71,6 +72,7 @@ export const FooterNav = styled.nav`
 
         li{
             font-size: .865rem;
+            letter-spacing: 0.2px;
             line-height: 1.5rem;
             font-weight: 400;
             color: ${(props) => props.theme['white']};
@@ -97,12 +99,14 @@ export const NavNewsletter = styled.section`
 
     h2{
         font-size: 1.2rem;
+        letter-spacing: 0.2px;
         font-weight: 700;
         color: ${(props) => props.theme['white']};
     }
 
     p{
         width: 65%;
+        letter-spacing: 0.2px;
         font-size: .865rem;
         line-height: 1rem;
         font-weight: 400;
@@ -138,6 +142,7 @@ export const ButtonNews = styled.fieldset `
     button{
         font-size: .865rem;
         font-weight: 600;
+        letter-spacing: 0.2px;
         color: ${(props) => props.theme['white']};
 
 
@@ -170,6 +175,7 @@ export const FooterInst = styled.section`
 
     p{
         width: 55%;
+        letter-spacing: 0.2px;
         font-size: .865rem;
         line-height: 1.5rem;
         font-weight: 400;

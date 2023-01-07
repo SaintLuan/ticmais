@@ -1,7 +1,24 @@
 import styled from "styled-components";
 
 export const TrendingContainer = styled.section`
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    header{
+            order: 0;
+        }
+
+        section{
+            &:first-child{
+                order: 1;
+            }
+            &:last-child{
+                order: 2;
+                margin-top: 1rem;
+            }
+        }
 `;
 
 export const TrendContainerGrid = styled.section`

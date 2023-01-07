@@ -5,12 +5,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     icon?: React.ReactNode;
     iconRight?: React.ReactNode;
     width: number;
+    widthMobile?: number;
 }
 
-export const Input = ({ icon, iconRight, className, width, ...props } :InputProps ) =>{
+export const Input = ({ icon, iconRight, className, width, widthMobile, ...props } :InputProps ) =>{
     return(
         <>
-            <InputStyled width={width} className={className}>
+            <InputStyled width={width} widthMobile={widthMobile} className={className}>
                 {icon}
 
                 <input

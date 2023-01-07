@@ -12,7 +12,8 @@ const nextConfig = {
       'www.oab-ro.org.br',
       'cands-cands.com',
       'vogueballroom.com.au',
-      'pymstatic.com'
+      'pymstatic.com',
+      'img.freepik.com'
     ],
   },
 }

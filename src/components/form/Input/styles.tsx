@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface InputProps {
     width: number;
+    widthMobile?: number;
 }
 
 export const InputStyled = styled.fieldset<InputProps>`
@@ -28,12 +29,6 @@ export const InputStyled = styled.fieldset<InputProps>`
     &:has(input:focus){
         border: 1px solid ${(props) => props.theme['secondary-500']};
 
-        svg{
-            path{
-                fill: ${(props) => props.theme['secondary-500']};
-            }
-        }
-
         input{
             color: ${(props) => props.theme['secondary-500']};
 
@@ -43,11 +38,7 @@ export const InputStyled = styled.fieldset<InputProps>`
         }
     }
 
-    svg{
-        fill: ${(props) => props.theme['gray-700']};
-
-        path{
-            fill: ${(props) => props.theme['gray-700']};
-        }
+    @media screen and (max-width: 480px){
+        width: ${props => props.widthMobile}%;
     }
 `;

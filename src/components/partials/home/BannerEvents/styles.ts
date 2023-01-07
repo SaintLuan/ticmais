@@ -12,7 +12,28 @@ export const BannerContainer = styled.section`
                 margin: 0 auto;
             }
         }
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        fieldset{
+            order: 0;
+        }
+
+        header{
+            order: 1;
+        }
+        &>div{
+            order: 2;
+        }
     }
+`;
+
+export const SwiperContainer = styled.div`
+    width: 100%;
+    height: 100%;
 `;
 
 export const BannerItem = styled.aside`
@@ -75,6 +96,24 @@ export const BannerItemInfos = styled.article`
         font-size: 2rem;
         font-weight: 800;
         line-height: 2rem;
+    }
+
+    .eventLocal{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 12px;
+
+        span{
+            span{
+                max-width: calc(100% - (22px*2));
+                
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
     }
 
     @media screen and (max-width: 480px){
