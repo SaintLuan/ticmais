@@ -16,6 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: delete files on server
+        uses: appleboy/ssh-action@master
+        with:
+          username: deploy
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            cd /home/deploy/ticmais/store
+            rm -rf *
+
       - name: send code to server
         uses: appleboy/scp-action@master
         with:
