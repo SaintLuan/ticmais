@@ -9,8 +9,16 @@ export type EventProps ={
     cattegory: string;
     tag: string;
     thumbnail: string;
+    tickets: TicketProps[];
 }
 
 export type EventsProps = {
     events: EventProps[];
+}
+
+export type TicketProps = {
+    cattegory: string;
+    type: string;
+    price: number;
+    tax: number;
 }

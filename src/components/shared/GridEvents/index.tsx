@@ -5,9 +5,9 @@ import { EventsProps } from "@/@types/events";
 import { Heart, Location } from "react-iconly";
 import Link from "next/link";
 import Image from "next/image";
-import { FilterTags } from "../FilterTags";
+import { FilterTags } from "../../partials/home/FilterTags";
 
-export const TrendEvents = ({ events }: EventsProps) => {
+export const GridEvents = ({ events }: EventsProps) => {
     return(
         <TrendingContainer className="container">
             <FilterTags />

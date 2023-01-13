@@ -98,7 +98,7 @@ export const LoginPage = () =>{
                 <Footer />
             </AppLayout>
 
-            {/* Aqui é a "página de cadastro" será exibida Caso seja clicado no CTA de cadastro via email */}
+            {/* Aqui é a "página do Login" será exibida Caso seja clicado no CTA de cadastro via email */}
             <ThemeProvider theme={defaultTheme}>
                 <LoginContainer className={ isFormOpen ? "activeForm active" : "activeForm" }>
                     <LoginFigure>
@@ -128,6 +128,7 @@ export const LoginPage = () =>{
                             iconRight={<Hide set="bold" />}
                             placeholder="Senha"
                         />
+                        <Link href='/forgot-password'>Esqueci minha senha</Link>
 
                         <Button 
                             color="primary-100"

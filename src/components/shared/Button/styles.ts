@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 interface ButtonProps {
     width: number;
-    color: 'primary-500' | 'primary-100' | 'gray-200';
-    textColor: 'white' | 'gray-900';
+    color: 'primary-500' | 'primary-100' | 'gray-200' | 'secondary-500';
+    textColor: 'white' | 'gray-900' | 'primary-500' | 'secondary-500';
 }
 
 export const ButtonStyled = styled.button<ButtonProps>`

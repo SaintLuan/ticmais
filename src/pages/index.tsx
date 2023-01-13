@@ -17,7 +17,7 @@ import { EventProps } from '@/@types/events';
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
 import { BannerEvents } from '@/components/partials/home/BannerEvents';
-import { TrendEvents } from '@/components/partials/home/TrendEvents';
+import { GridEvents } from '@/components/shared/GridEvents';
 import { CreateEvent } from '@/components/partials/home/CreateEvent';
 import { PartnersSection } from '@/components/partials/home/PartnersSection';
 import { BlogSection } from '@/components/shared/BlogSection';
@@ -70,7 +70,7 @@ export default function Home() {
           <Header />
 
           <BannerEvents events={highEvents} />
-          <TrendEvents events={trendingEvents} />
+          <GridEvents events={trendingEvents} />
 
           <CreateEvent />
           <PartnersSection partners={partners} />

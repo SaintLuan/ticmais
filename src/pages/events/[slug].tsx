@@ -1,19 +1,38 @@
 import { events } from "@/@data/events";
 import { EventProps } from "@/@types/events";
+import { CalendarGradient, LocalGradient, WalletGradient } from "@/assets/icons";
 import { Avatar } from "@/components/shared/Avatar";
+import { Button } from "@/components/shared/Button";
 import { Footer } from "@/components/shared/Footer";
 import { Header } from "@/components/shared/Header";
 import { Tag } from "@/components/shared/Tag";
 import { AppLayout } from "@/layouts/AppLayout";
-import { EventBanner, EventCardBanner, EventContainer, EventInfos, InfosAvatars, InfosHeader } from "@/styles/eventDetailsStyles";
+import { CatSlider, EventBanner, EventCardBanner, EventContainer, EventInfos, InfosAvatars, InfosBody, InfosDescMobile, InfosFooter, InfosHeader, InfosLocalDate, InfosTickets, LocalMap, Map, TicketContainer } from "@/styles/eventDetailsStyles";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
+import { InfoCircle } from "react-iconly";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+import mapaImage from '@/assets/img/pages/events/mapa.png';
 
 type Props = {
-    event: EventProps;
+  event: EventProps;
 };
 
 const EventDetail: React.FunctionComponent<Props> = ({ event }) => {
+
+    const sliderBreakpoints = {
+      320: {
+          slidesPerView: 4.5,
+          spaceBetween: 10,
+      },
+      1024: {
+          slidesPerView: 4.5,
+          spaceBetween: 10,
+      }
+    };
+
     return(
         <AppLayout 
           title={event.title}
@@ -53,6 +72,237 @@ const EventDetail: React.FunctionComponent<Props> = ({ event }) => {
                   <span className="likesCount"> 200+ curtiram</span>
                 </aside>
               </InfosHeader>
+
+              <InfosBody>
+
+                <InfosLocalDate>
+                  <section>
+
+                    <div>
+                      <LocalGradient />
+                      <h3>
+                        {event.local}
+                        <span>Rua Baraão de Melgaço — 78005-300</span>
+                      </h3>
+                    </div>
+
+                    <div>
+                      <CalendarGradient />
+                      <h3>
+                        {event.startDate}
+                        <span>{event.startDate}</span>
+                      </h3>
+                    </div> 
+
+                  </section>
+
+                  <footer>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque architecto, quae aspernatur mollitia voluptatem sequi ex 
+                      at praesentium nihil maiores placeat quibusdam facere cupiditate reprehenderit veritatis officiis 
+                      odit vel. Iste!
+                    </p>
+
+                    <span>Ler mais...</span>
+                  </footer>
+                  
+                </InfosLocalDate>
+
+                <InfosTickets>
+                  <CatSlider>
+                    <Swiper
+                      slidesPerView={4.5}
+                      breakpoints={sliderBreakpoints}
+                    >
+                      <SwiperSlide>
+                        <Tag
+                          bgColor="primary-500"
+                          className="filled"
+                          textColor="white"
+                        >
+                          Camarote
+                        </Tag>
+                      </SwiperSlide>
+
+                      <SwiperSlide>
+                        <Tag
+                          bgColor="primary-500"
+                          className="outline"
+                          textColor="primary-500"
+                        >
+                          Camarote
+                        </Tag>
+                      </SwiperSlide>
+
+                      <SwiperSlide>
+                        <Tag
+                          bgColor="primary-500"
+                          className="outline"
+                          textColor="primary-500"
+                        >
+                          Camarote
+                        </Tag>
+                      </SwiperSlide>
+
+                      <SwiperSlide>
+                        <Tag
+                          bgColor="primary-500"
+                          className="outline"
+                          textColor="primary-500"
+                        >
+                          Camarote
+                        </Tag>
+                      </SwiperSlide>
+
+                      <SwiperSlide>
+                        <Tag
+                          bgColor="primary-500"
+                          className="outline"
+                          textColor="primary-500"
+                        >
+                          Camarote
+                        </Tag>
+                      </SwiperSlide>
+                    </Swiper>
+                  </CatSlider>
+                  <TicketContainer>
+                    <h4 className="ticketTitle">
+                      Inteira + Alimento
+                      <InfoCircle set="bulk" primaryColor="#9E9E9E" />
+                    </h4>
+                    <p className="ticketLote">Lote 4</p>
+
+                    <aside className="ticketDescription">
+                      <p>
+                        <WalletGradient />
+                        R$ 70,00 + R$ 14,00 de taxa
+                      </p>
+                      <span>Inteira</span>
+                    </aside>
+
+                    <footer className="ticketFooter">
+                      <Button
+                        className="outline"
+                        color="primary-500"
+                        textColor="primary-500"
+                        width={48}
+                      >
+                        Remover
+                      </Button>
+
+                      <Button
+                        className="filled"
+                        color="secondary-500"
+                        textColor="white"
+                        width={48}
+                      >
+                        Adicionar
+                      </Button>
+                    </footer>
+                  </TicketContainer>
+
+                  <TicketContainer>
+                    <h4 className="ticketTitle">
+                      Inteira + Alimento
+                      <InfoCircle set="bulk" primaryColor="#9E9E9E" />
+                    </h4>
+                    <p className="ticketLote">Lote 4</p>
+
+                    <aside className="ticketDescription">
+                      <p>
+                        <WalletGradient />
+                        R$ 70,00 + R$ 14,00 de taxa
+                      </p>
+                      <span>Inteira</span>
+                    </aside>
+
+                    <footer className="ticketFooter">
+                      <Button
+                        className="outline"
+                        color="primary-500"
+                        textColor="primary-500"
+                        width={48}
+                      >
+                        Remover
+                      </Button>
+
+                      <Button
+                        className="filled"
+                        color="secondary-500"
+                        textColor="white"
+                        width={48}
+                      >
+                        Adicionar
+                      </Button>
+                    </footer>
+                  </TicketContainer>
+
+                  <TicketContainer>
+                    <h4 className="ticketTitle">
+                      Inteira + Alimento
+                      <InfoCircle set="bulk" primaryColor="#9E9E9E" />
+                    </h4>
+                    <p className="ticketLote">Lote 4</p>
+
+                    <aside className="ticketDescription">
+                      <p>
+                        <WalletGradient />
+                        R$ 70,00 + R$ 14,00 de taxa
+                      </p>
+                      <span>Inteira</span>
+                    </aside>
+
+                    <footer className="ticketFooter">
+                      <Button
+                        className="outline"
+                        color="primary-500"
+                        textColor="primary-500"
+                        width={48}
+                      >
+                        Remover
+                      </Button>
+
+                      <Button
+                        className="filled"
+                        color="secondary-500"
+                        textColor="white"
+                        width={48}
+                      >
+                        Adicionar
+                      </Button>
+                    </footer>
+                  </TicketContainer>
+                </InfosTickets>
+
+              </InfosBody>
+
+              <InfosDescMobile>
+                <h2>Descrição</h2>
+
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque architecto, quae aspernatur mollitia voluptatem sequi ex 
+                  at praesentium nihil maiores placeat quibusdam facere cupiditate reprehenderit veritatis officiis 
+                  odit vel. Iste!
+                </p>
+
+                <span>Ler mais...</span>
+              </InfosDescMobile>
+
+
+              <InfosFooter>
+                <LocalMap>
+                  <h2>Localidade</h2>
+
+                  <p>
+                    <LocalGradient />
+                    Rua Barão de Melgaço, Cuiabá - Matogrosso
+                  </p>
+
+                  <Map>
+                    <Image src={mapaImage} width={800} height={800} alt="Mapa do evento" />
+                  </Map>
+                </LocalMap>
+              </InfosFooter>
 
             </EventInfos>
 

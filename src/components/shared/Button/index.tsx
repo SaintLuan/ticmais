@@ -4,8 +4,8 @@ import { ButtonStyled } from "./styles";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     width: number;
     className: 'outline' | 'filled';
-    color: 'primary-500' | 'primary-100' | 'gray-200';
-    textColor: 'white' | 'gray-900';
+    color: 'primary-500' | 'primary-100' | 'gray-200' | 'secondary-500';
+    textColor: 'white' | 'gray-900' | 'primary-500' | 'secondary-500';
 }
 
 export const Button = ({ className, width, onClick, color, textColor, children }: ButtonProps) =>{
