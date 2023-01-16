@@ -1,8 +1,14 @@
 import { Input } from "@/components/form/Input";
+import { useState } from "react";
 
 import { Search, Filter } from "react-iconly";
 
 export const FilterInput = () => {
+    const [serach, setSearch] = useState('');
+    const handleInputType = () =>{
+        
+    }
+    
     return(
         <>
             <Input 

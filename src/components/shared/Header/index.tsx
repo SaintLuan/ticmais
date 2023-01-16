@@ -20,6 +20,11 @@ export const Header = () => {
             </HeaderLogo>
 
             <HeaderProfiler>
+
+                <Link href="/producer">
+                    Área do Produtor
+                </Link>
+
                 <Link href='/signin'>
                     <Image src={avatar} width={35} alt="Tic Mais" />
                 </Link>

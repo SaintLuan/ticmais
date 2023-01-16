@@ -64,21 +64,19 @@ export default function Home() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
+      <Header />
 
       <AppLayout title='Home'>
         <>
-          <Header />
-
           <BannerEvents events={highEvents} />
           <GridEvents events={trendingEvents} />
 
           <CreateEvent />
           <PartnersSection partners={partners} />
           <BlogSection artigos={blog} />
-
-          <Footer />
         </>
       </AppLayout>
+      <Footer />
     </ThemeProvider>
       
   )

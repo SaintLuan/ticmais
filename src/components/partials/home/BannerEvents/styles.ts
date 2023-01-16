@@ -34,6 +34,17 @@ export const BannerContainer = styled.section`
 export const SwiperContainer = styled.div`
     width: 100%;
     height: 100%;
+
+    padding-top: .365rem;
+    border-top: 1px solid ${props => props.theme['gray-400']};
+    border-radius: 25px;
+
+    .swiper-pagination{
+        bottom: 5px;
+        &-bullet{
+            background: ${props => props.theme['primary-500']};
+        }
+    }
 `;
 
 export const BannerItem = styled.aside`
@@ -80,7 +91,18 @@ export const BannerItemImage = styled.figure`
 
 export const BannerItemInfos = styled.article`
     width: 40%;
+    height: 350px;
     padding: 1rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &>div{
+        display: flex;
+        flex-direction: column;
+        gap: .65rem;
+    }
 
     .eventDate{
         font-size: .95rem;
@@ -116,6 +138,10 @@ export const BannerItemInfos = styled.article`
         }
     }
 
+    button{
+        margin: 0;
+    }
+
     @media screen and (max-width: 480px){
         width: 100%;
         padding: 1.25rem;
@@ -123,6 +149,10 @@ export const BannerItemInfos = styled.article`
             width: 100%;
             height: 2fr;
             font-size: 1.865rem;
+        }
+
+        button{
+            width: 85%;
         }
     }
 `;

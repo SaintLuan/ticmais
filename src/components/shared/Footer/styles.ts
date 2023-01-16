@@ -36,6 +36,10 @@ export const FooterContainer = styled.footer`
             background: no-repeat 50%/150% url(${wave?.src});
         }
     }
+
+    @media screen and (min-width: 1440px){
+        padding: 2rem 9rem;
+    }
 `;
 
 export const FooterTop = styled.canvas`

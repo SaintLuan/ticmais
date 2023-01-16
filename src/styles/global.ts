@@ -75,6 +75,10 @@ export const GlobalStyle = createGlobalStyle`
         width: 85%;
         margin: 0 auto;
         padding: 1rem 0;
+
+        @media screen and (min-width: 1440px){
+            width: 75%;
+        }
     }
 
     .layoutContainer{
@@ -82,6 +86,5 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
     }
 `;

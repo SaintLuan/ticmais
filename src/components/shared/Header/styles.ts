@@ -18,6 +18,9 @@ export const HeaderLogo = styled.figure`
 `;
 
 export const HeaderProfiler = styled.aside`
-
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
 `;
 
