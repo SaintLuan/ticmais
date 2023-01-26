@@ -1,18 +1,29 @@
 import { TitleSection } from "@/components/shared/TitleSection";
 import { TrendContainerGrid, TrendingContainer } from "./styles";
 
-import { EventsProps } from "@/@types/events";
+import { EventProps } from "@/@types/events";
 import Link from "next/link";
 import { FilterTags } from "../../partials/home/FilterTags";
 import { Button } from "../Button";
 import { EventCard } from "../EventCard";
 
-export const GridEvents = ({ events }: EventsProps) => {
+interface GridEventsProps {
+    events: EventProps[];
+    hasFilter: boolean;
+    hasTitle: boolean;
+    hasMore: boolean;
+}
+
+export const GridEvents = ({ events, hasFilter, hasTitle, hasMore }: GridEventsProps) => {
 
     return(
         <TrendingContainer className="container">
-            <FilterTags />
-            <TitleSection title="Em Alta" seeAllText="Ver Todos" seeALlLink="/events" />
+            
+
+            {hasFilter && <FilterTags />}
+
+            {hasTitle && <TitleSection title="Em Alta" seeAllText="Ver Todos" seeALlLink="/events" /> }
+            
 
             <TrendContainerGrid>
                 {
@@ -20,14 +31,17 @@ export const GridEvents = ({ events }: EventsProps) => {
                         <EventCard key={event.title} event={event} />
                     ))
                 }
-                <Button
-                    width={25}
-                    className="outline"
-                    color="primary-500"
-                    textColor="primary-500"
-                >
-                    Mais Eventos
-                </Button>
+                {
+                    hasMore &&
+                        <Button
+                            width={25}
+                            className="outline"
+                            color="primary-500"
+                            textColor="primary-500"
+                        >
+                            Mais Eventos
+                        </Button>
+                }
             </TrendContainerGrid>
         </TrendingContainer>
     );

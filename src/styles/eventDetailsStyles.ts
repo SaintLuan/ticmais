@@ -19,7 +19,9 @@ export const EventBanner = styled.figure<BannerProps>`
     background-size: cover;
 
     @media screen and (max-width: 480px){
-        height: 350px;
+        height: 35vh;
+        background: no-repeat url(${props => props.bgImage});
+        background-size: cover;
     }
 
     
@@ -45,8 +47,7 @@ export const EventCardBanner = styled.figure`
     }
 
     @media screen and (max-width: 480px){
-        width: 85%;
-        height: 350px;
+        display: none;
     }
 `;
 
@@ -63,7 +64,7 @@ export const EventInfos = styled.section`
     
     @media screen and (max-width: 480px){
         &.container{
-            margin-top: 5rem;
+            margin-top: .5rem;
         }
     }
 `;
@@ -71,7 +72,6 @@ export const EventInfos = styled.section`
 export const InfosHeader = styled.header`
     width: 100%;
     
-
     padding-bottom: 1rem;
     border-bottom: 1px solid ${props => props.theme['gray-300']};
 
@@ -98,6 +98,16 @@ export const InfosHeader = styled.header`
             color: ${props => props.theme['gray-800']};
         }
     }
+
+    @media screen and (max-width: 480px){
+        h1{
+            font-size: 1.5rem;
+        }
+
+        aside{
+            margin-top: 1rem;
+        }
+    }
 `;
 
 export const InfosAvatars = styled.section`
@@ -121,6 +131,7 @@ export const InfosBody =styled.section`
 
     @media screen and (max-width: 480px){
         flex-direction: column;
+        margin-top: 1.125rem;
     }
 `;
 

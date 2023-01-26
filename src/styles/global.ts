@@ -52,6 +52,15 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
     }
 
+    fieldset{
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        padding-block-start: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+        padding-block-end: 0;
+    }
+
     /* Custom ScrollBar */
 
     ::-webkit-scrollbar {
@@ -86,5 +95,10 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+
+    .ajustLoad{
+        width: 75px;
+        margin: 1rem 0;
     }
 `;

@@ -3,7 +3,7 @@ import { TileContainer } from "./styles";
 
 interface TitleProps{
     title: string;
-    seeAllText: string;
+    seeAllText?: string;
     seeALlLink: string;
 };
 

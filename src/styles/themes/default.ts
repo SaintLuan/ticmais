@@ -41,4 +41,6 @@ export const defaultTheme = {
   'bg-pink': '#FFF5F5',
   'bg-yellow': '#FFFEE0',
 
+  'error': '#DA100B',
+
 }

@@ -5,7 +5,7 @@ export const BannerContainer = styled.section`
 
     @media screen and (max-width: 480px){
         &.container{
-            width: 100%;
+            width: 90%;
 
             header{
                 width: 85%;
@@ -33,7 +33,6 @@ export const BannerContainer = styled.section`
 
 export const SwiperContainer = styled.div`
     width: 100%;
-    height: 100%;
 
     padding-top: .365rem;
     border-top: 1px solid ${props => props.theme['gray-400']};
@@ -43,6 +42,15 @@ export const SwiperContainer = styled.div`
         bottom: 5px;
         &-bullet{
             background: ${props => props.theme['primary-500']};
+        }
+    }
+
+    @media screen and (max-width: 480px){
+        /* .swiper-slide{
+            width: 85% !important;
+        } */
+        .swiper-pagination{
+            display: none;
         }
     }
 `;
@@ -61,12 +69,13 @@ export const BannerItem = styled.aside`
     border-radius: 40px;
 
     @media screen and (max-width: 480px){
-        flex-direction: column;         
+        flex-direction: column; 
+        margin: 1rem 0;        
     }
 `;
 
 export const BannerItemImage = styled.figure`
-    width: 60%;
+    width: 85%;
     height: 350px;
     /* background: ${(props) => props.theme['bg-blue']}; */
 
@@ -79,9 +88,7 @@ export const BannerItemImage = styled.figure`
 
     @media screen and (max-width: 480px){
         width: 100%;
-        height: 250px;
-
-        
+        height: 200px;
 
         img{
             border-radius: 20px 20px 20px 20px;
@@ -144,15 +151,38 @@ export const BannerItemInfos = styled.article`
 
     @media screen and (max-width: 480px){
         width: 100%;
-        padding: 1.25rem;
+        height: auto;
+        padding: 1rem .5rem;
+
+        &>div{
+            gap: .25rem;
+        }
+
         .eventTitle{
             width: 100%;
-            height: 2fr;
-            font-size: 1.865rem;
+            height: 54px;
+            font-size: 1.25rem;
+            line-height: 1.2;
+            order: 0;
+            margin: 0;
+        }
+
+        .eventDate{
+            order: 1;
+        }
+
+        .eventLocal{
+            height: 35px;
+            order: 2;
+
+            span{
+                font-size: .865rem;
+            }
         }
 
         button{
-            width: 85%;
+            width: 75%;
+            margin-top: 2rem;
         }
     }
 `;

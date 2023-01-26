@@ -1,30 +1,48 @@
 import { Footer } from "@/components/shared/Footer";
 import { Header } from "@/components/shared/Header";
 import { AppLayout } from "@/layouts/AppLayout";
-import { EventContainer } from "@/styles/eventsStyles";
+import { EventCategory, EventContainer } from "@/styles/eventsStyles";
 
 // Data
 import { events } from "@/@data/events";
 import { useEffect, useState } from "react";
 import { FilterTags } from "@/components/partials/home/FilterTags";
-import { EventsProps } from "@/@types/events";
+import { EventProps } from "@/@types/events";
 import { GridEvents } from "@/components/shared/GridEvents";
+import { TitleSection } from "@/components/shared/TitleSection";
+
+interface CategoryEventsProps {
+    category: string;
+    events: EventProps[];
+}
 
 const EventsPage = () =>{
 
     // Events data ajusts
-    const [categorys, setCategorys] = useState<string[]>([]);
+    const [categorys, setCategorys] = useState<CategoryEventsProps[]>([]);
 
     useEffect(() => {
-        var arrCategorys = new Array<string>();
+        let arrCategorys = new Array<CategoryEventsProps>();
         setCategorys([]);
         events.forEach((event, index) =>{
             if(arrCategorys.length === 0){
-                arrCategorys.push(event.cattegory);
+                let objArr = {
+                    category: event.cattegory,
+                    events: [event],
+                }
+                arrCategorys.push(objArr);
             }
             else{
-                if(arrCategorys.find(category => category !== event.cattegory)){
-                    arrCategorys.push(event.cattegory);
+                if(arrCategorys.find(item => item.category === event.cattegory)){
+                    let catIndex = arrCategorys.findIndex((cat, i) => cat.category === event.cattegory);
+                    arrCategorys[catIndex].events.push(event);
+                }
+                else{
+                    let objArr = {
+                        category: event.cattegory,
+                        events: [event],
+                    }
+                    arrCategorys.push(objArr);
                 }
             }
         });
@@ -35,8 +53,18 @@ const EventsPage = () =>{
         <AppLayout title="Eventos">
             <Header />
 
-            <EventContainer>                
-                <GridEvents events={events} />
+            <EventContainer>  
+                <FilterTags />
+                {categorys.map(( category ) => (
+                    <EventCategory key={category.category}>
+                        <TitleSection 
+                            title={category.category}
+                            seeALlLink=''
+                        />
+
+                        <GridEvents events={category.events} hasFilter={false} hasTitle={false} hasMore={false} />
+                    </EventCategory>
+                ))}              
             </EventContainer>
 
             <Footer />

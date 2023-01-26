@@ -13,7 +13,11 @@ const nextConfig = {
       'cands-cands.com',
       'vogueballroom.com.au',
       'pymstatic.com',
-      'img.freepik.com'
+      'img.freepik.com',
+      'countryflagsapi.com',
+      'vetores.org',
+      'www.spcdn.org',
+      'media.licdn.com',
     ],
   },
 }

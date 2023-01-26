@@ -40,5 +40,7 @@ export const InputStyled = styled.fieldset<InputProps>`
 
     @media screen and (max-width: 480px){
         width: ${props => props.widthMobile}%;
+        padding: .75rem 1rem;
+        margin: .5rem auto;
     }
 `;

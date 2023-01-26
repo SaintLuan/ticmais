@@ -43,16 +43,22 @@ export const PartnersHeader = styled.header`
 `;
 
 export const PartnersLogos = styled.article`
-    width: 100%;
+    width: 85%;
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 1rem 2.5rem;
+
+    @media screen and (max-width: 480px){
+        width: 90%;
+        gap: 1rem 1.25rem;
+    }
 `;
 
 export const PartnerLogo = styled.figure`
-    width: 8.5rem;
+    width: 7.5rem;
 
     img{
         width: 100%;
@@ -69,6 +75,6 @@ export const PartnerLogo = styled.figure`
     }
 
     @media screen and (max-width: 480px){
-        width: 7.5rem;
+        width: 5rem;
     }
 `;

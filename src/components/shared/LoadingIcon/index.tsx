@@ -1,13 +1,19 @@
 import Script from "next/script";
 
-export const LoadingIcon = () =>{
+interface LoadingProps{
+    style?: 'ajustLoad';
+}
+
+export const LoadingIcon = ({ style }: LoadingProps) =>{
     return(
         <>
             <svg 
                 id="eTbzs1XfdMv1"
                 viewBox="0 0 60 60" 
                 shapeRendering="geometricPrecision" 
-                textRendering="geometricPrecision">
+                textRendering="geometricPrecision"
+                className={style && style}
+            >
                     <defs>
                         <linearGradient id="eTbzs1XfdMv2-fill" x1="60" y1="60" x2="-11.3946" y2="39.2998" spreadMethod="pad" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 0)"><stop id="eTbzs1XfdMv2-fill-0" offset="0%" stop-color="#f0c75e"/>
                             <stop id="eTbzs1XfdMv2-fill-1" offset="100%" stopColor="#f5d993"/>

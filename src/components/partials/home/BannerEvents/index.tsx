@@ -13,22 +13,27 @@ import { Heart, Location } from "react-iconly";
 import { Button } from "@/components/shared/Button";
 import Link from "next/link";
 
-export const BannerEvents = ({ events }: EventsProps) =>{
+interface BannerProps {
+    events: EventProps[];
+    onHandleSearch: (query: string) => void;
+}
+
+export const BannerEvents = ({ events, onHandleSearch }: BannerProps) =>{
 
     const sliderBreakpoints = {
         320: {
             slidesPerView: 1.25,
-            spaceBetween: 20,
-            centeredSlides: true,
+            spaceBetween: 10,
+            centeredSlides: false,
         },
         1024: {
             slidesPerView: 1,
-            spaceBetween: 0.,
+            spaceBetween: 0,
             centeredSlides: true
         }
     };
     return(
-        <BannerContainer className="container">
+        <BannerContainer className="container" >
             <TitleSection title="Destaques" seeAllText="Ver Todos" seeALlLink="/events"/>
 
             <SwiperContainer>
@@ -79,7 +84,7 @@ export const BannerEvents = ({ events }: EventsProps) =>{
                 </Swiper>
             </SwiperContainer>
 
-            <FilterInput />
+            <FilterInput onHandleSearch={onHandleSearch} />
             
         </BannerContainer>
     );

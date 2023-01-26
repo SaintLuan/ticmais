@@ -21,4 +21,14 @@ export const TileContainer = styled.header`
         line-height: 1.5rem;
         color: ${props => props.theme['primary-500']};
     }
+
+    @media screen and (max-width: 480px){
+        .title{
+            font-size: 1.25rem;
+        }
+
+        .seeAll{
+            font-size: .865rem;
+        }
+    }
 `;
