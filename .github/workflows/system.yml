@@ -18,7 +18,7 @@ jobs:
           port: 2222
           username: root
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.ROOT_KEY }}
+          password: ${{ secrets.ROOT_KEY }}
           script: |
             apt update && apt upgrade -y
             apt install nginx -y || true
