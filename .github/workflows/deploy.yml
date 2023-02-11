@@ -19,30 +19,33 @@ jobs:
       - name: delete files on server
         uses: appleboy/ssh-action@master
         with:
-          username: deploy
+          port: 2222
+          username: ticmais
           host: ${{ secrets.HOST }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            cd /home/deploy/ticmais/store
+            cd /home/ticmais/store
             rm -rf *
 
       - name: send code to server
         uses: appleboy/scp-action@master
         with:
-          username: deploy
+          port: 2222
+          username: ticmais
           host: ${{ secrets.HOST }}
           key: ${{ secrets.DEPLOY_KEY }}
           source: "."
-          target: "/home/deploy/ticmais/store"
+          target: "/home/ticmais/store"
 
       - name: create .env file
         uses: appleboy/ssh-action@master
         with:
-          username: deploy
+          port: 2222
+          username: ticmais
           host: ${{ secrets.HOST }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            cd /home/deploy/ticmais/store
+            cd /home/ticmais/store
 
             rm .env
             touch .env
@@ -58,9 +61,10 @@ jobs:
       - name: build and publish
         uses: appleboy/ssh-action@master
         with:
-          username: deploy
+          port: 2222
+          username: ticmais
           host: ${{ secrets.HOST }}
           key: ${{ secrets.DEPLOY_KEY }}
           script: |
-            cd /home/deploy/ticmais/store
+            cd /home/ticmais/store
             yarn deploy:prod
