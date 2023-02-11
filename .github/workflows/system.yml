@@ -15,6 +15,7 @@ jobs:
       - name: install dependencies
         uses: appleboy/ssh-action@master
         with:
+          port: 2222
           username: root
           host: ${{ secrets.HOST }}
           key: ${{ secrets.ROOT_KEY }}
