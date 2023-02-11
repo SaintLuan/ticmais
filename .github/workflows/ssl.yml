@@ -35,7 +35,7 @@ jobs:
           port: 2222
           username: root
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.ROOT_KEY }}
+          password: ${{ secrets.ROOT_KEY }}
           source: "nginx/web.conf"
           target: "/etc/nginx/sites-available"
           strip_components: 1
@@ -46,7 +46,7 @@ jobs:
           port: 2222
           username: root
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.ROOT_KEY }}
+          password: ${{ secrets.ROOT_KEY }}
           script: |
             ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled || true
             sudo nginx -t
@@ -64,6 +64,6 @@ jobs:
           port: 2222
           username: root
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.ROOT_KEY }}
+          password: ${{ secrets.ROOT_KEY }}
           script: |
             certbot -m ${{ secrets.SSL_EMAIL }} --nginx --agree-tos --non-interactive --domains ${{ secrets.DOMAIN }}
