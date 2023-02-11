@@ -22,7 +22,7 @@ jobs:
           port: 2222
           username: ticmais
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          password: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd /home/ticmais/store
             rm -rf *
@@ -33,7 +33,7 @@ jobs:
           port: 2222
           username: ticmais
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          password: ${{ secrets.DEPLOY_KEY }}
           source: "."
           target: "/home/ticmais/store"
 
@@ -43,7 +43,7 @@ jobs:
           port: 2222
           username: ticmais
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          password: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd /home/ticmais/store
 
@@ -64,7 +64,7 @@ jobs:
           port: 2222
           username: ticmais
           host: ${{ secrets.HOST }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          password: ${{ secrets.DEPLOY_KEY }}
           script: |
             cd /home/ticmais/store
             yarn deploy:prod
