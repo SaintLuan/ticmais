@@ -4,7 +4,7 @@ import InputMask from "react-input-mask";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     icon?: React.ReactNode;
     iconRight?: React.ReactNode;
-    mask?: string;
+    mask?: string | (string | RegExp)[] | any ;
     width: number;
     widthMobile?: number;
 }
