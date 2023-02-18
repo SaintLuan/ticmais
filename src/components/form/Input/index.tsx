@@ -23,6 +23,8 @@ export const Input = ({ mask, icon, iconRight, className, width, widthMobile, ..
                     required
                     onChange={props.onChange}
                     onInvalid={props.onInvalid}
+                    name={props.name}
+                    id={props.id}
                 />
 
                 {iconRight}

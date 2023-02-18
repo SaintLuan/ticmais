@@ -1,7 +1,7 @@
 import { TitleSection } from "@/components/shared/TitleSection";
 import { TrendContainerGrid, TrendingContainer } from "./styles";
 
-import { EventProps } from "@/@types/events";
+import { CategorieProps, CategoriesProps, EventProps } from "@/@types/events";
 import Link from "next/link";
 import { FilterTags } from "../../partials/home/FilterTags";
 import { Button } from "../Button";
@@ -9,18 +9,19 @@ import { EventCard } from "../EventCard";
 
 interface GridEventsProps {
     events: EventProps[];
+    categories: CategorieProps[];
     hasFilter: boolean;
     hasTitle: boolean;
     hasMore: boolean;
 }
 
-export const GridEvents = ({ events, hasFilter, hasTitle, hasMore }: GridEventsProps) => {
+export const GridEvents = ({ events, hasFilter, hasTitle, hasMore, categories }: GridEventsProps) => {
 
     return(
         <TrendingContainer className="container">
             
 
-            {hasFilter && <FilterTags />}
+            {hasFilter && <FilterTags categories={categories} />}
 
             {hasTitle && <TitleSection title="Em Alta" seeAllText="Ver Todos" seeALlLink="/events" /> }
             
@@ -28,7 +29,7 @@ export const GridEvents = ({ events, hasFilter, hasTitle, hasMore }: GridEventsP
             <TrendContainerGrid>
                 {
                     events.map((event) => (
-                        <EventCard key={event.title} event={event} />
+                        <EventCard key={event.id} event={event} />
                     ))
                 }
                 {

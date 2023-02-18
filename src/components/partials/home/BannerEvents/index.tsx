@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 
 import { BannerContainer, BannerItem, BannerItemImage, BannerItemInfos, SwiperContainer } from "./styles";
 import { TitleSection } from "@/components/shared/TitleSection";
+import bannerDefault from '@/assets/img/banner-default.jpg';
 import Image from "next/image";
 import { FilterInput } from "../FilterInput";
 import { Heart, Location } from "react-iconly";
@@ -45,19 +46,24 @@ export const BannerEvents = ({ events, onHandleSearch }: BannerProps) =>{
                 >
                     {
                         events.map((event: EventProps) => (
-                            <SwiperSlide key={event.title}>
+                            <SwiperSlide key={event.id}>
                                 <BannerItem>
                                     <BannerItemImage>
-                                        <Image width={100} height={0} layout="responsive" src={event.thumbnail} alt={event.title} />
+                                        {
+                                            event.thumbnails['16x9'].src ?
+                                                <Image width={100} height={0} layout="responsive" src={'https://api.ticmais.ticpass.com.br' + event.thumbnails['16x9'].src} alt={event.label} />
+                                            :
+                                                <Image width={100} height={0} layout="responsive" src={bannerDefault} alt={event.label} />
+                                        }
                                     </BannerItemImage>
                                     
                                     <BannerItemInfos>
                                         <div>
-                                            <span className="eventDate">{event.startDate}</span>
-                                            <h2 className="eventTitle">{event.title}</h2>
+                                            <span className="eventDate">{event.schedule.start}</span>
+                                            <h2 className="eventTitle">{event.label}</h2>
                                             <span className="eventLocal">
                                                 <Location set="bold" primaryColor="#023E5E"/>
-                                                <span>{event.local}</span>
+                                                <span>{event.location.name}</span>
                                                 <Heart set="light" primaryColor="#023E5E" />
                                             </span>
                                         </div>
@@ -70,7 +76,7 @@ export const BannerEvents = ({ events, onHandleSearch }: BannerProps) =>{
                                                 textColor="white"
                                                 color="primary-500"
                                             >
-                                                <Link href={'/events/' + event.slug} >Ver detalhes</Link>
+                                                <Link href={'/events/' + event.meta.slug} >Ver detalhes</Link>
                                             </Button>
                                         </footer>
 

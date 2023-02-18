@@ -6,7 +6,7 @@ import { GlobalStyle } from '@/styles/global';
 import { AppLayout } from '@/layouts/AppLayout';
 
 // Data Imports
-import {events} from '@/@data/events';
+// import {events} from '@/@data/events';
 import {blog} from '@/@data/blog';
 import {partners} from '@/@data/partners';
 
@@ -24,6 +24,7 @@ import { BlogSection } from '@/components/shared/BlogSection';
 import { FilterTags } from '@/components/partials/home/FilterTags';
 import { LoadingIcon } from '@/components/shared/LoadingIcon';
 import { BottomMenu } from '@/components/shared/BottomMenu';
+import axios from 'axios';
 
 export default function Home() {
 
@@ -31,11 +32,13 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   // Uses React Hooks for state and http requests
-  // const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<EventProps[]>([]);
   const [trendingEvents, setTrendingEvents] = useState<EventProps[]>([]);
   const [highEvents, setHighEvents] = useState<EventProps[]>([]);
   // const [posts, setPosts] = useState([]);
   // const [partners, setPartners] = useState([]);
+
+  const [categories, setCategories] = useState([]);
 
   // Handle Search Form
   const [foundEvents, setFoundEvents] = useState<EventProps[]>([]);
@@ -44,7 +47,7 @@ export default function Home() {
     setFoundEvents([]);
 
     query = query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-    var eventsFounded = events.filter(event => event.title.includes(query));
+    var eventsFounded = events.filter(event => event.label.includes(query));
     
     if(query === '' || query.length === 0){
       setIsLoading(false);
@@ -60,31 +63,37 @@ export default function Home() {
   // Get Data for Home page (Using requests)
   useEffect(() => {
 
-    // Get Events Data
-    // axios.get();
+    axios.all([
+      axios.get(`${process.env.API_BASE}/event/list/all`), 
+      axios.get(`${process.env.API_BASE}/category/list`)
+    ])
+    .then(axios.spread((evRes, catRes) => {
+      setEvents(evRes.data.data);
+      setCategories(catRes.data);
 
-    // Reset States
-    setHighEvents([]);
-    setTrendingEvents([]);
+      if(evRes.data.data.length > 0){
+        // Reset States
+        setHighEvents([]);
+        setTrendingEvents([]);
 
-    events.forEach((event) => {
-      if(event.tag == 'Destaque'){
-        setHighEvents(prevHighEvents=> [
-          ...prevHighEvents,
-          event
-        ]);
-
+        evRes.data.data.forEach((event:EventProps, index:number) => {
+          if(index > 0 && index <= 2){
+            setHighEvents(prevHighEvents=> [
+              ...prevHighEvents,
+              event
+            ]);
+          }
+          setTrendingEvents(evRes.data.data);
+        });
       }
-      else{
-        setTrendingEvents(prevTrendingEvents=> [
-          ...prevTrendingEvents,
-          event
-        ]);
-      }
-      setIsLoading(false);
+    }))
+    .catch((error) => {
+      console.log(error);
     })
-    
-
+    .finally(()=>{
+      setIsLoading(false);
+    });   
+     
   },[]);
 
   return (
@@ -93,21 +102,24 @@ export default function Home() {
       <Header />
 
       <AppLayout title='Home'>
-
-        <BannerEvents onHandleSearch={onHandleSearch} events={highEvents} />
         <>
 
           {
             isLoading ?
               <LoadingIcon style='ajustLoad' />
             :
+            events.length <= 0 ?
+              <LoadingIcon style='ajustLoad' />
+            :
             foundEvents.length > 0 ?
               <>
-                <GridEvents events={foundEvents} hasFilter={false} hasTitle={false} hasMore={false} />
+                <BannerEvents onHandleSearch={onHandleSearch} events={highEvents} />
+                <GridEvents events={foundEvents} categories={categories} hasFilter={false} hasTitle={false} hasMore={false} />
               </>
             :
             <>
-              <GridEvents events={trendingEvents} hasFilter={true} hasTitle={true} hasMore={true} />
+              <BannerEvents onHandleSearch={onHandleSearch} events={highEvents} />
+              <GridEvents events={trendingEvents} categories={categories} hasFilter={true} hasTitle={true} hasMore={false} />
             </>
           }
           
